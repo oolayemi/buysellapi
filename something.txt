@@ -1,0 +1,37 @@
+public function index()
+    {
+        return response()->json(AuthUser::all(), 200);
+    }
+
+    public function create()
+    {
+        $createAuth = AuthUser::create();
+        return response()->json($createAuth, 200);
+    }
+
+    public function store(Request $request)
+    {
+        return response()->json(AuthUser::create($request->all()), 201);
+    }
+
+    public function show($id)
+    {
+        $authUser = AuthUser::findOrFail($id);
+        return response()->json($authUser, 200);
+    }
+
+    public function edit($id)
+    {
+        //
+    }
+
+    public function update(Request $request, AuthUser $authUser)
+    {
+        $user = AuthUser::findOrFail($authUser);
+        return response()->json(AuthUser::update())
+    }
+
+    public function destroy($id)
+    {
+        return response()->json(AuthUser::destroy($id), 201);
+    }
