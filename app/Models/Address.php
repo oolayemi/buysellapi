@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
+
+    protected $guarded = [];
     use HasFactory;
 
-    public function addresses() {
-        return $this->belongsTo(User::class);
+    public function users() {
+        return $this->belongsToMany(User::class);
     }
 }
