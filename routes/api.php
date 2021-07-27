@@ -30,3 +30,7 @@ Route::get('/products', ['App\Http\Controllers\ProductController', 'index']);
 Route::post('/product/add', ['App\Http\Controllers\ProductController', 'store']);
 Route::get('/product/{id}', ['App\Http\Controllers\ProductController', 'show']);
 Route::delete('/product/{id}', ['App\Http\Controllers\ProductController', 'destroy']);
+
+
+Route::get('/categories', ['App\Http\Controllers\CategoryController', 'index']);
+Route::post('/category/add', ['App\Http\Controllers\CategoryController', 'store']);

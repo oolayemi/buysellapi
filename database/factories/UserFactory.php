@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'phoneNumber' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified' => $this->faker->randomElement(array(true, false)),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', //password
+            'password' => bcrypt('password'), //password
             'role' => $this->faker->randomElement(array("user", "admin"))
         ];
     }

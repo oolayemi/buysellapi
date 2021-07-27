@@ -22,6 +22,7 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => $this->faker->numberBetween(1, 20),
             'addressTitle' => $this->faker->streetName,
             'country' => $this->faker->country,
             'streetAddress' => $this->faker->streetAddress,

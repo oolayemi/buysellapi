@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -39,9 +40,14 @@ class UserController extends Controller
 //    public function show(AuthUser $authUser)
     public function show($id)
     {
-        //
         $authUser = User::findOrFail($id);
         return response()->json($authUser, 200);
+    }
+
+    //Get user addresses
+    public function addresses($id){
+        $authUser = User::findOrFail($id);
+        return response()->json($authUser->addresses, 200);
     }
 
     public function signin($email, $password)
@@ -50,7 +56,29 @@ class UserController extends Controller
             ['email', '=', $email],
             ['password', '=', $password],
         ])->first();
-        return response()->json($authUser, 200);
+
+
+        if ( !is_null($authUser)){
+            return response()->json([
+                "message" => "Successful",
+                "result" => $authUser
+            ], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+
+//            return response()->json([
+//                "message" => "Successful",
+//                "result" => $authUser
+//            ], 200);
+
+        } else {
+            return response()->json([
+                "message" => "User details incorrect",
+
+            ], 400, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+//            return response()->json([
+//                "message" => "User details incorrect",
+//            ], 404);
+        }
+
     }
 
     /**

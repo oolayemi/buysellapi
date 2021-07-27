@@ -22,8 +22,30 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->userName,
-            'imageUrl' => $this->faker->imageUrl()
+            'name' => $this->faker->randomElement(array('Men Shirt', 'Dress', 'Man Work Equipment', 'Woman Bag', 'Men Shoes', 'High Heels', 'Gown', 'Gloves')),
+            'imageUrl' => $this->faker->randomElement(array('menshirt.png', 'dress.png', 'menworkequipment.png', 'womanbag.png', 'menshoes.png', 'womanshoes.png'))
         ];
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
