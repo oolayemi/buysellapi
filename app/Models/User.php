@@ -14,7 +14,7 @@ class User extends Authenticatable
     protected $guarded = [];
 
     public  function addresses(){
-        return $this->belongsToMany(Address::class);
+        return $this->hasMany(Address::class);
     }
 
     public function carts(){
